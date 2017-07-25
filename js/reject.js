@@ -1,5 +1,5 @@
     //filter() takes in collection and a function, returns array of collection's elements that had been evaluated to 'true' by the function passed to filter().
-    const filter2 = (list, fn) => {
+    const reject = (list, fn) => {
       //debugger;
     const f_array_with_function = (list,fn) => {
         let ans = [];
@@ -10,7 +10,6 @@
         }
         return ans;
       }
-
       const f_object_with_function = (list,fn) => {
         let ans = [];
         for(let prop in list){
@@ -20,18 +19,15 @@
         }
         return ans;
       }
-
-      const answer = [];
+      let answer = [];
 
       switch(typeof list){
-        //list is a string
         case "string":
-            f_array_with_function(list,fn);
+            answer = f_array_with_function(list,fn);
         break;
 
-        //list is an array
         case "object":
-            f_object_with_function(list,fn);
+           answer = f_object_with_function(list,fn);
         break;
       }
       return answer;
