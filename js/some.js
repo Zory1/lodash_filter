@@ -9,75 +9,71 @@
         - The `_.property` iteratee shorthand (string)
 */
 
-const reject = (list, fn) => {
- let answer = [];
+const some = (list, fn) => {
+ let answer = false;
 
     //1. start:    define functions for different predicates
     const f_array_with_function = (list,fn) => {
-        let ans = [];
         for (let i = 0; i < list.length; i++) {
-            if (!fn(list[i])) {
-                ans.push(list[i]);
+            if (fn(list[i])) {
+                return true;
             }
         }
-        return ans;
+        return false;
     }
 
     const f_object_with_function = (list,fn) => {
-        let ans = [];
-        if(typeof list != "object") return ans;
+        if(typeof list != "object") return false;
         for(let prop in list){
-            if(list.hasOwnProperty(prop) && !fn(list[prop])){
-                ans.push(list[prop]);
+            if(list.hasOwnProperty(prop) && fn(list[prop])){
+                return true;
             }
         }
-        return ans;
+        return false;
     }
 
     const f_arr_of_objects_with_object = (list,fn) =>{
-        let ans = [];
         if(typeof list.length != "undefined"){
             for(let i = 0; i < list.length; i++){  
                 if(typeof list[i] === "object" && typeof list[i].length === "undefined"){
-                    let matched_prop = 0;
-                    let not_matched_prop_val = 0;
+                    let matched_properties = 0;
+                    let prop_in_counter = 0;
                     for(let prop in fn){
                         if(fn.hasOwnProperty(prop)){
-                            if(typeof list[i][prop] != "undefined") matched_prop++;
-                            if(typeof list[i][prop] != "undefined" && fn[prop] != list[i][prop]) not_matched_prop_val++;
+                            prop_in_counter++;
+                            if(typeof list[i][prop] != "undefined" && fn[prop] === list[i][prop]) matched_properties++;
                         }
                     }
-                    if(matched_prop > 0 && matched_prop === not_matched_prop_val) ans.push(list[i]);       
+                    if(prop_in_counter === matched_properties) return true;       
                 }
             }
         }
-        return ans;
+        return false;
     }
     const f_arr_of_objects_with_array = (list,fn) =>{
-        let ans = [];
         if(typeof list.length != "undefined"){
             for(let i = 0; i < list.length; i++){  
-                if(typeof list[i] === "object" && typeof list[i].length === "undefined" && list[i][fn[0]] != fn[1]){
-                    ans.push(list[i]);
+                if(typeof list[i] === "object" && typeof list[i].length === "undefined" && list[i][fn[0]] === fn[1]){
+                    return true;
                 }
             }
         }
-        return ans;
+        return false;
     }
     const f_arr_of_objects_with_string = (list,fn) =>{
-        let ans = [];
         if(typeof list.length != "undefined"){
             for(let i = 0; i < list.length; i++){  
-                if(typeof list[i] === "object" && typeof list[i].length === "undefined" && !list[i][fn]){
-                    ans.push(list[i]);
+                if(typeof list[i] === "object" && typeof list[i].length === "undefined" && list[i][fn]){
+                    return true;
                 }
             }
         }
-        return ans;
+        return  false;
     }
     //1. end:      define functions for different predicates
     
     //2. start:    determine which function to use
+
     switch(typeof fn){
         case "function":          
             if(typeof list.length != "undefined"){
