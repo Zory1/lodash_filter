@@ -1,0 +1,63 @@
+.digital-water {
+    background: #74ebd5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACB6E5, #74ebd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: #fff !important;
+}
+.error-message{
+   /*background: #ff9966; /*fallback for old browsers */
+  background: #ec008c;  /* fallback for old browsers */
+  
+    color: #fff;
+}
+.logo {
+    font-family: 'Courgette', cursive;
+    color: #fff;
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+textarea.materialize-textarea:focus:not([readonly]){
+	border-bottom: 1px solid #ACB6E5 !important;
+	box-shadow:0 1px 0 0 #ACB6E5 !important;
+    border-left: none !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly]),
+input.input-field:focus:not([readonly]){
+	border-bottom: 1px solid #ACB6E5 !important;
+	box-shadow:0 1px 0 0 #ACB6E5 !important;
+    border-left: none !important;
+}
+
+label.active{
+    color: #ACB6E5 !important;
+}
+
+body {
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color:rgba(0,0,0,0.7);
+}
+
+.card-action{
+    padding-bottom: 0px !important;
+    margin-bottom: 0px !important;
+}
+.error-field{
+    
+    padding-left: 5px;
+    padding-right: 5px;
+    font-family: 'Courgette', cursive;
+    color:#ffc0cb;
+}
+
+@media only screen and (max-width: 601px) {
+    body{
+        background: #ECE9E6;
+    }
+}
+
+
+
