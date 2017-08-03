@@ -5008,6 +5008,7 @@ if (jQuery) {
        * @param {Boolean} firstActivation  If on first activation of select
        */
       var activateOption = function (collection, newOption, firstActivation) {
+        $("div.select-wrapper").removeClass("ng-untouched").addClass("ng-touched");
         if (newOption) {
           collection.find('li.selected').removeClass('selected');
           var option = $(newOption);
@@ -5015,6 +5016,7 @@ if (jQuery) {
           if (!multiple || !!firstActivation) {
             options.scrollTo(option);
           }
+          if(option.hasClass("active")) $('div.select-wrapper').removeClass('ng-invalid').addClass('ng-valid');
         }
       };
 

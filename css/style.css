@@ -10,6 +10,50 @@
   
     color: #fff;
 }
+
+div.ng-invalid.ng-touched + label,  textarea.ng-invalid.ng-touched + label, form.ng-submitted .invalid {
+    color:#EF629F  !important;
+}
+
+
+p.instructions {
+    font-family: 'Courgette', cursive;
+    font-size: 1rem;
+    margin-right: 10px;
+    margin-top: 0px !important;
+    color:#EF629F !important;
+    display: block;
+}
+
+div.ng-valid + label.active, textarea.ng-valid + label.active {
+    color:  #ACB6E5 !important;
+}
+
+div.ng-invalid + label.active, textarea.ng-invalid + label.active,form.ng-submitted div.ng-invalid + label, form.ng-submitted textarea.ng-invalid + label, form.ng-submitted .invalid  {
+    color:  #EF629F !important;
+}
+
+textarea.materialize-textarea:focus:not([readonly]),
+input.input-field:focus:not([readonly]),div.select-wrapper.ng-invalid > input:focus:not([readonly]),
+form.ng-submitted textarea.ng-invalid, form.ng-submitted div.select-wrapper.ng-invalid > input {
+	border-bottom: 1px solid #EF629F !important;
+	box-shadow:0 1px 0 0 #EF629F !important;
+    border-left: none !important;
+}
+
+textarea.materialize-textarea.ng-valid:focus:not([readonly]),
+input.input-field.ng-valid:focus:not([readonly]),
+textarea.materialize-textarea.ng-valid,
+input.input-field.ng-valid,div.select-wrapper.ng-valid > input{
+	border-bottom: 1px solid #ACB6E5 !important;
+	box-shadow:0 1px 0 0 #ACB6E5 !important;
+    border-left: none !important;
+}
+
+#select-label.fun, #select-label.fun_arg, #select-label.obj, #select-label.str, #select-label.arr {
+    color:#ACB6E5 !important;
+}
+
 .logo {
     font-family: 'Courgette', cursive;
     color: #fff;
@@ -17,22 +61,6 @@
     margin-right: 10px;
 }
 
-textarea.materialize-textarea:focus:not([readonly]){
-	border-bottom: 1px solid #ACB6E5 !important;
-	box-shadow:0 1px 0 0 #ACB6E5 !important;
-    border-left: none !important;
-}
-
-textarea.materialize-textarea:focus:not([readonly]),
-input.input-field:focus:not([readonly]){
-	border-bottom: 1px solid #ACB6E5 !important;
-	box-shadow:0 1px 0 0 #ACB6E5 !important;
-    border-left: none !important;
-}
-
-label.active{
-    color: #ACB6E5 !important;
-}
 
 body {
     background: #ECE9E6;  /* fallback for old browsers */

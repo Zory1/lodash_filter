@@ -84,11 +84,11 @@
 }
 
 .red {
-  background-color: #F44336 !important;
+  background-color: #ffc0cb!important;
 }
 
 .red-text {
-  color: #F44336 !important;
+  color: #ffc0cb!important;
 }
 
 .red.lighten-5 {
@@ -6233,10 +6233,13 @@ input[type=number].invalid:not(.browser-default):focus,
 input[type=search].invalid:not(.browser-default),
 input[type=search].invalid:not(.browser-default):focus,
 textarea.materialize-textarea.invalid,
-textarea.materialize-textarea.invalid:focus, .select-wrapper.invalid > input.select-dropdown {
-  border-bottom: 1px solid #F44336;
-  -webkit-box-shadow: 0 1px 0 0 #F44336;
-          box-shadow: 0 1px 0 0 #F44336;
+textarea.materialize-textarea.invalid:focus, 
+div.ng-invalid.ng-touched > input.select-dropdown, 
+.select-wrapper.ng-invalid.ng-touched > input.select-dropdown,
+textarea.materialize-textarea.ng-invalid.ng-touched {
+  border-bottom: 1px solid #ffc0cb!important;
+  -webkit-box-shadow: 0 1px 0 0 #ec008c;
+          box-shadow: 0 1px 0 0 #ec008c;
 }
 
 input:not([type]).valid + label:after,
@@ -6299,7 +6302,7 @@ input[type=search]:not(.browser-default):focus.invalid + label:after,
 textarea.materialize-textarea.invalid + label:after,
 textarea.materialize-textarea:focus.invalid + label:after, .select-wrapper.invalid + label:after {
   content: attr(data-error);
-  color: #F44336;
+  color: #ec008c;
   opacity: 1;
   -webkit-transform: translateY(9px);
           transform: translateY(9px);
@@ -7000,7 +7003,7 @@ select {
   pointer-events: none;
 }
 
-.select-wrapper input.select-dropdown {
+.select-wrapper:not(.select-wrapper.select-wrapper.ng-invalid.ng-touched) input.select-dropdown {
   position: relative;
   cursor: pointer;
   background-color: transparent;
@@ -9069,7 +9072,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 .picker__clear {
-  color: #f44336;
+  color: #ec008c;
   float: left;
 }
 
