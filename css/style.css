@@ -32,7 +32,7 @@ div.ng-invalid + label.active, textarea.ng-invalid + label.active,form.ng-submit
 textarea.materialize-textarea:focus:not([readonly]),
 input.input-field:focus:not([readonly]),div.select-wrapper.ng-invalid > input:focus:not([readonly]),
 form.ng-submitted textarea.ng-invalid, form.ng-submitted div.select-wrapper.ng-invalid > input,
-textarea.materialize-textarea#predicate.ng-invalid.ng-not-empty {
+textarea.materialize-textarea#predicate.ng-invalid.ng-not-empty, .invalidinput input {
 	border-bottom: 1px solid #EF629F !important;
 	box-shadow:0 1px 0 0 #EF629F !important;
     border-left: none !important;

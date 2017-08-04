@@ -13,6 +13,10 @@
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.js"></script>
       <script type="text/javascript">
+            $(document).ready("#clear").click(function() {
+                 $('select').material_select();
+            });
+            
             $(document).ready(function() {
                 $('select').material_select();
             });
@@ -23,7 +27,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
        <title>Lodash functions by Zory</title>
     </head>
-    <body ng-app="lodash">
+    <body ng-app="lodash" ng-controller="lodash_controller">
 
   <nav digital-water>
     <div class="nav-wrapper digital-water">
@@ -37,14 +41,18 @@
         <div class="container">
             <div class="row">        
                 <div class="col s12 m6">
-                    <div class="card-panel error-message ">
-                        <span class="">
-                            There was an issue with the input - see inline error messages and try again! And check out  <a href ="https://lodash.com/docs/4.17.4#every" target = "blank" class ="error-field">lodash</a> documentation, where you can see all supported formats for various Collection functions, and examples of their usage. </br>
+
+                    <!-- TODO: as it is there is a slight delay and you can see pink box for a moment, while page loads - because
+                        'params' declared later in the page. Add logic in controller later to fix this.-->
+                    <div id = "err-msg" class="card-panel error-message hide" ng-show="message">
+                        <span  class="">
+                            There was an issue with the input - see highlighted fields and try again! And check out  <a href ="https://lodash.com/docs/4.17.4#every" target = "blank" class ="error-field">lodash</a> documentation, where you can see all supported formats for various Collection functions, and examples of their usage. </br>
                         </span>
                     </div>
+                    
                     <div class="card-panel " style="padding-bottom: 15px;">
                         <div class="row" style = "margin-bottom: 0px !important">
-                            <form class="" name="params" novalidate>
+                            <form class="" name="params" ng-submit="process_input()" novalidate>
                                
                                 <div class="row">
                                     <div class="input-field col s12">
@@ -55,7 +63,7 @@
                                 </div>
                                
                                 <div class="row">
-                                     <div class="input-field col s12">
+                                     <div class="input-field col s12" ng-class="{invalidinput: !fun.predicate_type && message}">
                                         <select ng-model = "fun.predicate_type" ng-required = "true" name ="predicate_type">
                                             <option value="" disabled selected>Choose your option</option>
                                             <option value="fun_arg">function(e){..e..}</option>
@@ -63,7 +71,7 @@
                                             <option value="arr">array of 2 ["key", "val"]</option>
                                             <option value="str">string</option>
                                         </select>
-                                        <label id="select-label" ng-class="fun.predicate_type">Predicate type</label>    
+                                        <label id="select-label" ng-class="{invalid:!fun.predicate_type && message}">Predicate type</label>    
                                     </div>
                                 </div>
 
@@ -82,10 +90,10 @@
                                                                                 
                                         <label for = "predicate" class = ''>Predicate</label>
 
-                                        <p class="instructions" ng-show="fun.predicate_type=='fun_arg' && params.predicate.$invalid && !params.predicate.$pristine">Type in your function body. Reffer to passed argument as 'e', e.g e.key or e[key].</p>
-                                        <p class="instructions" ng-show="fun.predicate_type=='obj' && params.predicate.$invalid && !params.predicate.$pristine">Type in object like this: { "key": "value" }</p>
-                                        <p class="instructions" ng-show="fun.predicate_type=='arr' && params.predicate.$invalid && !params.predicate.$pristine">Type in array of two elements: ['key', 'value']</p>
-                                        <p class="instructions" ng-show="fun.predicate_type=='str' && params.predicate.$invalid && !params.predicate.$pristine">String is one word, without any quotes.</p>
+                                        <p class="instructions" ng-show="fun.predicate_type=='fun_arg' && params.predicate.$invalid && !params.predicate.$prestine">Type in your function body. Reffer to passed argument as 'e', e.g e.key or e[key].</p>
+                                        <p class="instructions" ng-show="fun.predicate_type=='obj' && params.predicate.$invalid && !params.predicate.$prestine">Type in object like this: { "key": "value" }</p>
+                                        <p class="instructions" ng-show="fun.predicate_type=='arr' && params.predicate.$invalid && !params.predicate.$prestine">Type in array of two elements: ['key', 'value']</p>
+                                        <p class="instructions" ng-show="fun.predicate_type=='str' && params.predicate.$invalid && !params.predicate.$prestine">String is one word, without any quotes.</p>
                                         
                                      </div>
                                 </div>
@@ -130,7 +138,7 @@
                                 
                                 <div class="card-action row right-align">
                                         <div class="col s6 push-m1" style="padding-right: 0px !important;margin-right: 0px !important;">
-                                            <a class="waves-effect waves-water btn-flat ">Clear</a>
+                                            <a id="clear" class="waves-effect waves-water btn-flat " ng-click="clear_input()" >Clear</a>
                                         </div>
 
                                         <div class="col s6">
@@ -146,8 +154,8 @@
                
                 <div class="col s12 m6">
                     <div class="card-panel ">
-                        <span class="">I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
+                        <span class="">
+                            Selected function is: {{ selected_func }}
                         </span>
                     </div>
                      <div class="card-panel ">
