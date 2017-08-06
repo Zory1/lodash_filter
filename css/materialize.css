@@ -6084,8 +6084,6 @@ input[type=number]:not(.browser-default):focus:not([readonly]),
 input[type=search]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
   border-bottom: 1px solid #ACB6E5;
-  -webkit-box-shadow: 0 1px 0 0 #ACB6E5;
-          box-shadow: 0 1px 0 0 #ACB6E5;
 }
 
 input:not([type]):focus:not([readonly]) + label,
@@ -6100,7 +6098,7 @@ input[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label,
 input[type=tel]:not(.browser-default):focus:not([readonly]) + label,
 input[type=number]:not(.browser-default):focus:not([readonly]) + label,
 input[type=search]:not(.browser-default):focus:not([readonly]) + label,
-textarea.materialize-textarea:focus:not([readonly]) + label {
+ {
   color: #ACB6E5;
 }
 
@@ -6205,8 +6203,6 @@ input[type=search].valid:not(.browser-default):focus,
 textarea.materialize-textarea.valid,
 textarea.materialize-textarea.valid:focus, .select-wrapper.valid > input.select-dropdown {
   border-bottom: 1px solid #4CAF50;
-  -webkit-box-shadow: 0 1px 0 0 #4CAF50;
-          box-shadow: 0 1px 0 0 #4CAF50;
 }
 
 input.invalid:not([type]), input.invalid:not([type]):focus,
@@ -6238,8 +6234,7 @@ div.ng-invalid.ng-touched > input.select-dropdown,
 .select-wrapper.ng-invalid.ng-touched > input.select-dropdown,
 textarea.materialize-textarea.ng-invalid.ng-touched {
   border-bottom: 1px solid #ffc0cb!important;
-  -webkit-box-shadow: 0 1px 0 0 #ec008c;
-          box-shadow: 0 1px 0 0 #ec008c;
+ 
 }
 
 input:not([type]).valid + label:after,

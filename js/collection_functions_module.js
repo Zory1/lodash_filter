@@ -123,7 +123,7 @@ var collection_functions_module = ()=> {
 
     /* EVERY FUNCTION
         In:     list and predicate.
-        Out:    array of elements that do not match the predicate.
+        Out:    true if all elements match predicate, false otherwise.
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
@@ -236,7 +236,8 @@ var collection_functions_module = ()=> {
 
     /* PARTITION FUNCTION
         In:     list and predicate.
-        Out:    array of elements that do not match the predicate.
+        Out:    array of two arrays, first array with matching elments and second array with elements
+                that did not match the predicate.
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
@@ -502,7 +503,7 @@ var collection_functions_module = ()=> {
 
     /* SOME FUNCTION
         In:     list and predicate.
-        Out:    array of elements that do not match the predicate.
+        Out:    returns true if some elements match predicate, false otherwise.
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function

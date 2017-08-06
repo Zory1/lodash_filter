@@ -1,3 +1,4 @@
+[ng\:cloak],[ng-cloak],.ng-cloak{display:none !important}
 .digital-water {
     background: #74ebd5;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #ACB6E5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
@@ -25,7 +26,7 @@ p.instructions {
     display: block;
 }
 
-div.ng-invalid + label.active, textarea.ng-invalid + label.active,form.ng-submitted div.ng-invalid + label, form.ng-submitted textarea.ng-invalid + label, form.ng-submitted .invalid  {
+div.ng-invalid + label.active, textarea.ng-invalid + label.active, form.ng-submitted div.ng-invalid + label, form.ng-submitted textarea.ng-invalid + label, form.ng-submitted .invalid  {
     color:  #EF629F !important;
 }
 
@@ -34,7 +35,6 @@ input.input-field:focus:not([readonly]),div.select-wrapper.ng-invalid > input:fo
 form.ng-submitted textarea.ng-invalid, form.ng-submitted div.select-wrapper.ng-invalid > input,
 textarea.materialize-textarea#predicate.ng-invalid.ng-not-empty, .invalidinput input {
 	border-bottom: 1px solid #EF629F !important;
-	box-shadow:0 1px 0 0 #EF629F !important;
     border-left: none !important;
 }
 
@@ -43,7 +43,6 @@ input.input-field.ng-valid:focus:not([readonly]),
 textarea.materialize-textarea.ng-valid,
 input.input-field.ng-valid,div.select-wrapper.ng-valid > input{
 	border-bottom: 1px solid #ACB6E5 !important;
-	box-shadow:0 1px 0 0 #ACB6E5 !important;
     border-left: none !important;
 }
 
@@ -84,5 +83,16 @@ body {
     }
 }
 
+.bottom-bordered-el{
+    border-top: 1px solid rgba(0,0,0,0.2);
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
 
-
+blockquote {
+    font-family: 'Courgette', cursive;
+    font-size: 1.2em;
+    border-left: 15px solid #74ebd5 !important;
+}

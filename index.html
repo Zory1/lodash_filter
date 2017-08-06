@@ -8,7 +8,8 @@
       <link type="text/css" rel="stylesheet" href="css/style.css"  media="screen,projection"/>
       <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-     
+      
+      <script src="https://code.highcharts.com/highcharts.js"></script>
       <script type="text/javascript" src="js/collection_functions_module.js"></script>
       <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
       <script type="text/javascript" src="js/materialize.js"></script>
@@ -20,6 +21,7 @@
             $(document).ready(function() {
                 $('select').material_select();
             });
+
       </script>
       <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js"></script>
       <script type="text/javascript" src="js/app.js"></script>
@@ -39,12 +41,11 @@
   </nav>
 
         <div class="container">
-            <div class="row">        
-                <div class="col s12 m6">
+            <div class="row">    
 
-                    <!-- TODO: as it is there is a slight delay and you can see pink box for a moment, while page loads - because
-                        'params' declared later in the page. Add logic in controller later to fix this.-->
-                    <div id = "err-msg" class="card-panel error-message hide" ng-show="message">
+
+                <div class="col s12 m6">
+                    <div ng-cloak id = "err-msg" class="card-panel error-message hide" ng-show="message && !params.$valid">
                         <span  class="">
                             There was an issue with the input - see highlighted fields and try again! And check out  <a href ="https://lodash.com/docs/4.17.4#every" target = "blank" class ="error-field">lodash</a> documentation, where you can see all supported formats for various Collection functions, and examples of their usage. </br>
                         </span>
@@ -57,8 +58,8 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <textarea style="margin-bottom:0px"  name="collection" id="collection" class="materialize-textarea" ng-model = "fun.collection" ng-required = "true" is-collection></textarea>
-                                        <label for="collection" class='active'>Collection</label>
-                                         <p class="instructions" ng-show=" params.collection.$invalid && !params.collection.$pristine">Collection can be an object like {"key":"value","key2":"value2"...} or array ["element1", "element2"...] or a string (no quotes).</p>
+                                        <label for="collection" id="lb" class=''>Collection</label>
+                                         <p ng-cloak class="instructions" ng-show=" params.collection.$invalid && !params.collection.$pristine">Collection can be an object like {"key":"value","key2":"value2"...} or array ["element1", "element2"...] or a string (no quotes).</p>
                                      </div>
                                 </div>
                                
@@ -80,7 +81,7 @@
                                         2) Instead of using 5 textarea tags, research way to bing dynamic validation directive
                                         3) Put all error messages into scope var and apply it to one p tag, instead of 5
                                 -->
-                                <div  ng-if="params.predicate_type.$valid" class="row">
+                                <div ng-cloak  ng-if="params.predicate_type.$valid" class="row">
                                     <div class="input-field col s12">
                                         
                                         <textarea ng-if = "fun.predicate_type=='fun_arg' && params.predicate_type.$valid"  style="margin-bottom:0px"  id = "predicate" name ="predicate" class = "materialize-textarea" ng-model = "fun.predicate"  ng-required = "true" is-function ></textarea>
@@ -102,7 +103,7 @@
                                 <div class="row ">
                                     <div class="col s12">
                                         <label for="function" style = "font-size: 1rem" ng-class = "{invalid: !fun.function_name}">Chose function</label>
-                                        <p class="instructions" ng-show="params.function.$invalid && params.$submitted">Must select one.</p>
+                                        <p ng-cloak class="instructions" ng-show="params.function.$invalid && params.$submitted">Must select one.</p>
                                     </div>
 
                                     <div class="col s6 left-align">
@@ -153,27 +154,34 @@
                 </div>
                
                 <div class="col s12 m6">
-                    <div class="card-panel ">
-                        <span class="">
-                            Selected function is: {{ selected_func }}
-                        </span>
+                    <div ng-cloak id = "err-msg" class="card-panel error-message" ng-model="results_error" ng-show="results_error">
+                            <span  class="">
+                                {{results_error}}
+                            </span>
+                        </div>
+                    <div class="card-panel" ng-model="results">
+                        
+
+                        <h5>Results of running a function <span ng-if="function_name" ng-model="function_name"> {{function_name}}</span></h5>
+                        <span ng-if="!results"><p>Will appear here, once you chose and submit input in the form. </p><p><blockquote>In God we trust, everything else we test</blockquote>  Bare in mind that front end was not fully tested due to time restrictions. Keep up your fate <i class="material-icons" style = "vertical-align: bottom">sentiment_very_satisfied</i></span></p>
+                    
+                        <div class="row" ng-cloak ng-if="results.available" ng-model="results" style="word-wrap: break-word;">
+                            <div class="col s12">
+                               <label>Function returned </label>
+                                <p class="bottom-bordered-el">{{results.elements}}</p>
+                            </div>
+                            <div class="col s12">
+                                <label>Match predicate <span class="new badge" data-badge-caption="elements">{{results.true_count}}</span> </label>
+                                <p class="bottom-bordered-el"> {{results.true_elements}}</p>
+                            </div>
+                            <div class="col s12">
+                                 <label>Do not match predicate <span class="new badge" data-badge-caption="elements">{{results.false_count}}</span> </label>
+                                <p class ="bottom-bordered-el">{{results.false_elements}}</p>
+                            </div>
+                        </div>
                     </div>
-                     <div class="card-panel ">
-                        <span class="">I am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenientI am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively. I am similar to what is called a panel in other frameworks.
-                        </span>
+                    <div class="card-panel" ng-cloak ng-show="results.available">
+                        <div id="highchart-container"></div>
                     </div>
                 </div>
                
