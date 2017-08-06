@@ -8,9 +8,9 @@ var collection_functions_module = ()=> {
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
-            - The `_.matches` iteratee shorthand (object)
-            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
-            - The `_.property` iteratee shorthand (string)
+            - The `_.matches` iteratee shorthand (object)
+            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
+            - The `_.property` iteratee shorthand (string)
     */
 
     exports.filter = (list, fn) => {
@@ -127,9 +127,9 @@ var collection_functions_module = ()=> {
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
-            - The `_.matches` iteratee shorthand (object)
-            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
-            - The `_.property` iteratee shorthand (string)
+            - The `_.matches` iteratee shorthand (object)
+            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
+            - The `_.property` iteratee shorthand (string)
     */
 
     exports.every = (list, fn) => {
@@ -241,9 +241,9 @@ var collection_functions_module = ()=> {
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
-            - The `_.matches` iteratee shorthand (object)
-            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
-            - The `_.property` iteratee shorthand (string)
+            - The `_.matches` iteratee shorthand (object)
+            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
+            - The `_.property` iteratee shorthand (string)
     */
 
     exports.partition = (list, fn) => {
@@ -387,9 +387,9 @@ var collection_functions_module = ()=> {
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
-            - The `_.matches` iteratee shorthand (object)
-            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
-            - The `_.property` iteratee shorthand (string)
+            - The `_.matches` iteratee shorthand (object)
+            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
+            - The `_.property` iteratee shorthand (string)
     */
 
     exports.reject = (list, fn) => {
@@ -507,9 +507,9 @@ var collection_functions_module = ()=> {
         List can be: array of strings | numbers | objects, or object, or string. 
         Predicates can be:
             - Function
-            - The `_.matches` iteratee shorthand (object)
-            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
-            - The `_.property` iteratee shorthand (string)
+            - The `_.matches` iteratee shorthand (object)
+            - The `_.matchesProperty` iteratee shorthand (array of 2 strings)
+            - The `_.property` iteratee shorthand (string)
     */
 
     exports.some = (list, fn) => {
